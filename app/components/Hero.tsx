@@ -10,7 +10,7 @@ export default function Hero() {
     const reverseGradients = [...gradients].reverse();
 
     return (
-        <section className='flex flex-1 items-center justify-start h-screen min-h-[calc(100vh-64px)] w-full'>
+        <section className='flex flex-1 relative items-center justify-start h-screen min-h-[calc(100vh-64px)] w-full'>
             <div className='flex flex-col gap-2 text-white'>
                 <span className='text-2xl font-semibold leading-none'>Hello! I am</span>
                 <div className='relative flex h-28 text-8xl tracking-tight font-extrabold'>

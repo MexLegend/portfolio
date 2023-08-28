@@ -1,48 +1,49 @@
 
-import React from 'react'
+import { FC } from 'react';
 import { Gradient } from '../types/gradient';
 
 interface Props {
     label: string;
-    gradient: Gradient;
+    gradient: Partial<Gradient>;
 }
 
-const SectionHeader: React.FC<Props> = ({ label, gradient: { startColor, endColor } }) => {
+const SectionDivider: FC<Partial<Gradient>> = ({ startViaColor, endViaColor }) => {
 
-    const divider = () => {
-        return <div className="absolute inset-0 m-auto -z-10 w-full h-[.5px] left-0 -top-[.5px]">
-            <div
-                className={`
-                absolute 
-                w-full 
-                h-[1px]
-                bg-gradient-to-r
-                from-transparent
-                from-0%
-                ${'via-[#007CF0]'}
-                to-[rgba(249,248,247,0)]
-                to-100%
-                blur-[.2px]
-            `}
-            >
-            </div>
-            <div
-                className={`
-                absolute 
-                w-full
-                h-[1px]
-                bg-gradient-to-r
-                from-[rgba(96,46,166,0)]
-                from-0%
-                ${'via-[#00DFD8]'}
-                to-[rgba(96,46,166,0)]
-                to-100%
-                blur-[.5px]
-                shadow-[0_4px_4px_rgba(0,0,0,0.25)]
-                `}>
-            </div>
+    return <div className="absolute inset-0 m-auto -z-10 w-3/4 h-[.5px] left-0 -top-[.5px]">
+        <div
+            className={`
+            absolute 
+            w-full 
+            h-[1px]
+            bg-gradient-to-r
+            from-transparent
+            from-0%
+            ${startViaColor}
+            to-[rgba(249,248,247,0)]
+            to-100%
+            blur-[.2px]
+        `}
+        >
         </div>
-    }
+        <div
+            className={`
+            absolute 
+            w-full
+            h-[1px]
+            bg-gradient-to-r
+            from-[rgba(96,46,166,0)]
+            from-0%
+            ${endViaColor}
+            to-[rgba(96,46,166,0)]
+            to-100%
+            blur-[.5px]
+            shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+            `}>
+        </div>
+    </div>
+}
+
+const SectionHeader: FC<Props> = ({ label, gradient: { startColor, startViaColor, endColor, endViaColor } }) => {
 
     return (
         <div className="relative w-full text-center">
@@ -61,7 +62,7 @@ const SectionHeader: React.FC<Props> = ({ label, gradient: { startColor, endColo
                     {label}
                 </span>
             </div>
-            {divider()}
+            <SectionDivider startViaColor={startViaColor} endViaColor={endViaColor} />
         </div>
     )
 }
