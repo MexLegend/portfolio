@@ -6,13 +6,14 @@ import { gradients } from '../mocks/gradients';
 interface Props {
     label: string;
     click: () => void;
+    outLined: boolean;
     customClasses?: string;
     gradientCycle?: boolean;
     startColor?: string;
     endColor?: string;
 }
 
-const GradientButton: FC<Props> = ({ label, click, customClasses, gradientCycle, startColor, endColor }) => {
+const GradientButton: FC<Props> = ({ label, click, outLined, customClasses, gradientCycle, startColor, endColor }) => {
 
     return (
         <button className={`relative w-40 h-12 transition duration-200 active:scale-95 ${customClasses}`} onClick={click}>
@@ -36,7 +37,8 @@ const GradientButton: FC<Props> = ({ label, click, customClasses, gradientCycle,
                 bg-transparent
             `}>
                 <span className='z-20 absolute inset-0 flex items-center justify-center'>{label}</span>
-                <div className={`
+                {
+                    outLined && <div className={`
                         z-10
                         transition-colors
                         duration-500
@@ -48,8 +50,9 @@ const GradientButton: FC<Props> = ({ label, click, customClasses, gradientCycle,
                         rounded-lg
                         bg-dark-blue
                         group-hover:bg-transparent
-                        `}>
-                </div>
+                    `}>
+                    </div>
+                }
             </div>
             {
                 gradientCycle && <>

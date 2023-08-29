@@ -16,8 +16,8 @@ const CardHexagonIcon: FC<CardHexagonIconProps> = ({ icon: Icon }) => {
             <div className="absolute left-[1px] top-[1px] drop-shadow-[0] shadow-[#763DB0]">
                 <svg style={{ width: 0, height: 0, position: "absolute" }} aria-hidden="true" focusable="false">
                     <linearGradient id="outer-hexagon-gradient" x2="1.5" y2=".5">
-                        <stop offset="0%" stop-color="#7928CA" />
-                        <stop offset="60%" stop-color="#FF0080" />
+                        <stop offset="0%" stopColor="#7928CA" />
+                        <stop offset="60%" stopColor="#FF0080" />
                     </linearGradient>
                 </svg>
                 <BsHexagonFill size={70} style={{ fill: "url(#outer-hexagon-gradient)" }} />
@@ -25,8 +25,8 @@ const CardHexagonIcon: FC<CardHexagonIconProps> = ({ icon: Icon }) => {
             <>
                 <svg style={{ width: 0, height: 0, position: "absolute" }} aria-hidden="true" focusable="false">
                     <linearGradient id="inner-hexagon-gradient" x2="1.5" y2=".5">
-                        <stop offset="0%" stop-color="#FFFEFF" />
-                        <stop offset="60%" stop-color="#EBA6F6" />
+                        <stop offset="0%" stopColor="#FFFEFF" />
+                        <stop offset="60%" stopColor="#EBA6F6" />
                     </linearGradient>
                 </svg>
                 <BsHexagonFill size={72} style={{ fill: "url(#inner-hexagon-gradient)" }} />

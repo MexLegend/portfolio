@@ -8,6 +8,10 @@ body,
   height: 100%;
 }
 
+html {
+  @apply scroll-smooth;
+}
+
 body {
   @apply bg-dark-blue;
 }

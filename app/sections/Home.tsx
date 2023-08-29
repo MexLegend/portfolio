@@ -1,16 +1,16 @@
 'use client';
 
 import { gradients } from '../mocks/gradients';
-import Button from './Button';
-import GradientButton from './GradientButton';
-import GradientText from './GradientText';
+import Button from '../components/Button';
+import GradientButton from '../components/GradientButton';
+import GradientText from '../components/GradientText';
 
-export default function Hero() {
+export default function Home() {
 
     const reverseGradients = [...gradients].reverse();
 
     return (
-        <section className='flex flex-1 relative items-center justify-start h-screen min-h-[calc(100vh-64px)] w-full'>
+        <section id='home' className='section flex flex-1 relative items-center justify-start h-screen min-h-[calc(100vh-64px)] w-full'>
             <div className='flex flex-col gap-2 text-white'>
                 <span className='text-2xl font-semibold leading-none'>Hello! I am</span>
                 <div className='relative flex h-28 text-8xl tracking-tight font-extrabold'>
@@ -55,7 +55,7 @@ export default function Hero() {
                 </p>
                 <div className='flex items-start w-full gap-5 mt-10'>
                     <Button label='Hire me' customClasses='!w-40 !mx-0' click={() => { }} />
-                    <GradientButton label='Download CV' gradientCycle={true} click={() => { }} />
+                    <GradientButton label='Download CV' outLined={true} gradientCycle={true} click={() => { }} />
                 </div>
             </div>
             <div className='flex flex-1'>

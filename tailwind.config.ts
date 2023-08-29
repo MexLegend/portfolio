@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         "dark-blue": "rgb(14,12,35)",
+        "light-blue": "rgba(154,173,203,0.3)"
       },
       keyframes: {
         'bg-gradient-cycle': {

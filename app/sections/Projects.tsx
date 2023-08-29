@@ -2,13 +2,13 @@
 
 import { FaAngular } from 'react-icons/fa';
 import { TbBrandNextjs } from 'react-icons/tb';
-import SectionHeader from './SectionHeader'
+import SectionHeader from '../components/SectionHeader'
 import { gradients } from '../mocks/gradients'
-import Card from './Card'
+import Card from '../components/Card'
 
 const Projects = () => {
     return (
-        <section className='py-20'>
+        <section id='projects' className='section py-20'>
             <SectionHeader label='Projects' gradient={gradients[1]} />
             <div
                 className="

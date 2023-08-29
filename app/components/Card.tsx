@@ -186,6 +186,7 @@ const Card: FC<Props> = ({ image, icon }) => {
                     <GradientButton
                         label='Demo'
                         customClasses='!w-full max-w-[50%]'
+                        outLined={true}
                         startColor='from-[#7928CA]'
                         endColor='to-[#FF0080]'
                         click={() => { }} />
