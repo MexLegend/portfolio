@@ -8,37 +8,42 @@ import Projects from "./sections/Projects";
 import SectionGradientBg from "./components/SectionGradientBg";
 import Footer from "./sections/Footer";
 import { useEffect } from "react";
-import { handleMoveIndicator } from "./helpers/handleMoveIndicator";
-import { useRouter } from 'next/navigation';
+import useActiveLinkStore from "./hooks/useActiveLink";
+import { navLinks } from "./mocks/navlinks";
 
 export default function Home() {
 
-  const router = useRouter();
-
-  const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+  const { setActiveLink, setScrollOffset } = useActiveLinkStore((state) => state);
 
   const handleScroll = async () => {
 
+    const windowYOffset = window.scrollY;
+    setScrollOffset(windowYOffset);
+
     const sections = document.querySelectorAll(".section");
     const formatedSections = Array.from(sections as NodeListOf<HTMLElement>);
-    const windowYOffset = window.scrollY + 80;
 
-    const activeSection = formatedSections.find(e => (e.offsetTop + e.offsetHeight >= windowYOffset));
+    const activeSection = formatedSections.find(e => (e.offsetTop + e.offsetHeight >= windowYOffset + 80));
 
     if (activeSection) {
       const sectionId = activeSection.id;
-      const sectionOffsetTop = activeSection.offsetTop;
 
-      // await delay(200);
-
-      // if (('#' + sectionId) !== window.location.hash) router.push('#' + sectionId);
-
+      const navLink = navLinks.find(e => e.label.toLowerCase() === sectionId) || navLinks[0];
       const navLinkElement = document.getElementById(`link-` + sectionId);
-      handleMoveIndicator(navLinkElement as HTMLAnchorElement, false)
+
+      setActiveLink(
+        {
+          ...navLink,
+          width: `${navLinkElement?.offsetWidth || 59}px`,
+          translateX: `${navLinkElement?.offsetLeft || 0}px`,
+        });
     }
 
-
   };
+
+  useEffect(() => {
+    setScrollOffset(window.scrollY);
+  }, [])
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

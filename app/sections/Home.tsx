@@ -9,6 +9,10 @@ export default function Home() {
 
     const reverseGradients = [...gradients].reverse();
 
+    const handleDownloadCV = () => {
+        window.open('cv/Armando_Lara_CV_V2.pdf', '_selft')!.focus();
+    }
+
     return (
         <section id='home' className='section flex flex-1 relative items-center justify-start h-screen min-h-[calc(100vh-64px)] w-full'>
             <div className='flex flex-col gap-2 text-white'>
@@ -54,8 +58,15 @@ export default function Home() {
                     Code, Design, Create: With a keen eye for design and a mastery of cutting-edge web and mobile technologies, I specialize in turning ideas into stunning, functional realities.
                 </p>
                 <div className='flex items-start w-full gap-5 mt-10'>
-                    <Button label='Hire me' customClasses='!w-40 !mx-0' click={() => { }} />
-                    <GradientButton label='Download CV' outLined={true} gradientCycle={true} click={() => { }} />
+                    <Button label='Hire me' customClasses='!w-40 !mx-0' href='#contact' target='_self' />
+                    <GradientButton
+                        label='Download CV'
+                        outLined={true}
+                        gradientCycle={true}
+                        href='cv/Armando_Lara_CV_V2.pdf'
+                        target='_self'
+                        download
+                    />
                 </div>
             </div>
             <div className='flex flex-1'>

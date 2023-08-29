@@ -1,11 +1,14 @@
 'use client';
 
-import { FC } from 'react'
+import { FC, HTMLAttributeAnchorTarget } from 'react'
 import { gradients } from '../mocks/gradients';
 
 interface Props {
     label: string;
-    click: () => void;
+    click?: () => void;
+    href?: string;
+    target?: HTMLAttributeAnchorTarget;
+    download?: boolean;
     outLined: boolean;
     customClasses?: string;
     gradientCycle?: boolean;
@@ -13,10 +16,17 @@ interface Props {
     endColor?: string;
 }
 
-const GradientButton: FC<Props> = ({ label, click, outLined, customClasses, gradientCycle, startColor, endColor }) => {
+const GradientButton: FC<Props> = ({ label, click, href, target, download, outLined, customClasses, gradientCycle, startColor, endColor }) => {
 
     return (
-        <button className={`relative w-40 h-12 transition duration-200 active:scale-95 ${customClasses}`} onClick={click}>
+        <a
+            className={`relative w-40 h-12 transition duration-200 active:scale-95 ${customClasses}`}
+            onClick={click}
+            href={href}
+            target={target}
+            download={download}
+            rel="noreferrer"
+        >
             <div className={`
                 z-40
                 group
@@ -114,7 +124,7 @@ const GradientButton: FC<Props> = ({ label, click, outLined, customClasses, grad
                 `}>
                 </div>
             }
-        </button>
+        </a>
     )
 }
 

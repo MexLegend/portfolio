@@ -3,12 +3,11 @@
 import React, { FC } from 'react'
 import CardHexagonIcon from './CardHexagonIcon';
 import Button from './Button';
-import { IconType } from 'react-icons';
 import GradientButton from './GradientButton';
+import { Project } from '../types/project';
 
 interface Props {
-    image: string;
-    icon: any;
+    project: Project;
 }
 
 const CardBorderGradientTopToBottom = () => {
@@ -97,7 +96,7 @@ const CardSeparator = () => {
     );
 }
 
-const Card: FC<Props> = ({ image, icon }) => {
+const Card: FC<Props> = ({ project: { name, thumbnail, description, frameworkIcon, codeLink, demoLink } }) => {
 
     return (
         <div
@@ -135,7 +134,7 @@ const Card: FC<Props> = ({ image, icon }) => {
                 >
                 </div>
                 <img
-                    src={image}
+                    src={thumbnail}
                     alt="card_img"
                     height={300}
                     width={400}
@@ -175,21 +174,24 @@ const Card: FC<Props> = ({ image, icon }) => {
                 <CardBorderGradientTopToBottom />
                 <CardBorderGradientBottomToTop />
                 <div className="absolute right-5 -top-10 z-10">
-                    <CardHexagonIcon icon={icon} />
+                    <CardHexagonIcon icon={frameworkIcon} />
                 </div>
-                <h2 className="font-semibold text-xl">Using Discord</h2>
-                <CardSeparator />
-                <h4 className="my-3">Mastering the Art of Prompt Writing</h4>
-                <p className="text-white/60 line-clamp-3">Prompt writing involves crafting clear and engaging prompts, while using images to create a visual representation of the idea or concept.</p>
-                <div className='flex gap-3 w-full relative mt-4'>
-                    <Button label='Code' customClasses='w-full max-w-[50%]' click={() => { }} />
-                    <GradientButton
-                        label='Demo'
-                        customClasses='!w-full max-w-[50%]'
-                        outLined={true}
-                        startColor='from-[#7928CA]'
-                        endColor='to-[#FF0080]'
-                        click={() => { }} />
+                <div className='flex flex-col flex-1 h-full'>
+                    <h2 className="font-semibold text-xl">{name}</h2>
+                    <CardSeparator />
+                    <p className="text-white/60 line-clamp-5 mt-3">{description}</p>
+                    <div className='flex gap-3 w-full relative mt-auto'>
+                        <Button label='Code' customClasses='w-full max-w-[50%]' href={codeLink} target='_blank' />
+                        <GradientButton
+                            label='Demo'
+                            customClasses='!w-full max-w-[50%]'
+                            outLined={true}
+                            startColor='from-[#7928CA]'
+                            endColor='to-[#FF0080]'
+                            href={demoLink}
+                            target='_blank'
+                        />
+                    </div>
                 </div>
             </div>
         </div>

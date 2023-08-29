@@ -1,10 +1,7 @@
-'use client';
-
-import { FaAngular } from 'react-icons/fa';
-import { TbBrandNextjs } from 'react-icons/tb';
 import SectionHeader from '../components/SectionHeader'
 import { gradients } from '../mocks/gradients'
 import Card from '../components/Card'
+import { projects } from '../mocks/projects';
 
 const Projects = () => {
     return (
@@ -23,9 +20,11 @@ const Projects = () => {
                     pt-16
                 "
             >
-                <Card image="images/image.svg" icon={FaAngular} />
-                <Card image="images/image2.svg" icon={TbBrandNextjs} />
-                <Card image="images/image3.svg" icon={TbBrandNextjs} />
+                {
+                    projects.map((project, index) => {
+                        return <Card key={'project-' + index} project={project} />
+                    })
+                }
             </div>
         </section>
     )

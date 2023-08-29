@@ -1,16 +1,17 @@
 'use client';
 
-import { FC } from "react";
+import { FC, HTMLAttributeAnchorTarget } from "react";
 
 interface ButtonProps {
     label: string;
-    click: () => void;
+    href: string;
+    target: HTMLAttributeAnchorTarget;
     customClasses?: string;
 }
 
-const Button: FC<ButtonProps> = ({ label, click, customClasses }) => {
+const Button: FC<ButtonProps> = ({ label, href, target, customClasses }) => {
     return (
-        <button
+        <a
             className={`
                 group
                 relative
@@ -35,10 +36,12 @@ const Button: FC<ButtonProps> = ({ label, click, customClasses }) => {
                 shadow-[0_4px_4px_rgba(0,0,0,0.1)]
                 ${customClasses}
             `}
-            onClick={click}
+            href={href}
+            target={target}
+            rel="noreferrer"
         >
             <span className="ml-2">{label}</span>
-        </button>
+        </a>
     );
 }
 
