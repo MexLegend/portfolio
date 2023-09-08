@@ -69,8 +69,8 @@ export default function Home() {
                     />
                 </div>
             </div>
-            <div className='flex flex-1'>
-
+            <div className='flex flex-1 pl-20'>
+                <img className='w-full h-full object-contain' src="images/avatar.png" alt="avatar_image" />
             </div>
         </section>
     )
