@@ -31,17 +31,21 @@ const NavMenu = () => {
                 {isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
             </button>
             <div className={`
-                hidden
                 absolute 
                 left-0
+                top-0
                 items-end 
                 justify-end 
-                ${scrollOffset >= 80 ? 'h-[calc(100vh-80px)] top-[80px]' : 'h-[calc(100vh-64px)] top-[64px]'}
-                w-screen 
-                bg-indigo-950/80 
-                ${isOpen ? 'max-md:flex' : 'hidden'}
+                h-screen
+                w-screen
+                transition 
+                duration-500
+                ease-in
+                -z-10
+                bg-dark-blue
+                ${isOpen ? 'max-md:translate-y-0' : '-translate-y-full'}
             `} onClick={toogleIsOpen}>
-                <div className="flex items-center justify-center w-full pt-4 mt-20 h-full bg-dark-blue">
+                <div className="flex items-center justify-center w-full py-24 h-full">
                     <NavLinks direction="Vertical" />
                 </div>
             </div>

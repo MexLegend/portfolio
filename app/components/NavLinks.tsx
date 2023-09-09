@@ -29,7 +29,7 @@ const NavLinks: FC<NavLinksProps> = ({ direction, hideOnMobile }) => {
     }, [params]);
 
     return (
-        <ul className={`flex gap-4 relative ${hideOnMobile && 'max-md:hidden'} ${direction === 'Vertical' && 'flex-col text-lg'}`}>
+        <ul className={`flex gap-4 relative ${hideOnMobile && 'max-md:hidden'} ${direction === 'Vertical' && 'flex-col text-2xl gap-8'}`}>
             {navLinks.map((link) => {
                 return (
                     <li key={link.label}>

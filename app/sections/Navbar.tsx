@@ -25,6 +25,7 @@ export default function Navbar() {
             items-center
             px-[10%]
             max-md:px-[5%]
+            max-md:justify-between
             bg-transparent
             border-b 
             border-b-transparent
@@ -44,7 +45,7 @@ export default function Navbar() {
                 before:inset-0
                 before:-z-10
             `}
-            ${isOpen && '!bg-dark-blue'}
+            ${isOpen && '!bg-dark-blue before:hidden'}
         `}>
             <Link
                 className="transition duration-200 active:scale-95 text-lg text-white font-bold hover:text-white"
