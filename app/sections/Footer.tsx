@@ -13,7 +13,7 @@ const Footer = () => {
                 <SocialMediaButton icon={BsLinkedin} href='https://linkedin.com/in/armandolara97' />
                 <SocialMediaButton icon={BsGithub} href='https://github.com/MexLegend' />
             </div>
-            <p className='w-full flex items-center gap-2 justify-center text-center'>
+            <p className='w-full flex items-center gap-2 justify-center text-center max-sm:hidden'>
                 <span className='flex items-center justify-center gap-2 text-white/70'>
                     Made with <span className='text-rose-600'><BsFillHeartFill /></span> by
                 </span>

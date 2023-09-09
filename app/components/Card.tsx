@@ -108,8 +108,7 @@ const Card: FC<Props> = ({ project: { name, thumbnail, description, frameworkIco
                 items-stretch 
                 justify-items-stretch 
                 bg-[#0C1033] 
-                h-[380px] 
-                lg:h-[503px]
+                h-[500px]
                 w-full
                 max-w-[440px] 
                 rounded-[20px]
@@ -161,8 +160,7 @@ const Card: FC<Props> = ({ project: { name, thumbnail, description, frameworkIco
                     to-[rgba(49,58,91,100%)]
                     to-100%
                     w-full 
-                    h-[205px] 
-                    lg:h-[276px] 
+                    h-[276px] 
                     rounded-[20px]
                     backdrop-blur-[10px]
                     py-5

@@ -9,15 +9,27 @@ export default function Home() {
 
     const reverseGradients = [...gradients].reverse();
 
-    const handleDownloadCV = () => {
-        window.open('cv/Armando_Lara_CV_V2.pdf', '_selft')!.focus();
-    }
-
     return (
-        <section id='home' className='section flex flex-1 relative items-center justify-start h-screen min-h-[calc(100vh-64px)] w-full'>
+        <section
+            id='home'
+            className='
+                section 
+                flex 
+                flex-1 
+                relative 
+                items-center 
+                justify-start 
+                h-screen 
+                min-h-[calc(100vh-64px)] 
+                w-full
+                max-md:flex-col-reverse
+                max-md:gap-12
+                max-md:justify-center
+                max-md:text-center
+            '>
             <div className='flex flex-col gap-2 text-white'>
-                <span className='text-2xl font-semibold leading-none'>Hello! I am</span>
-                <div className='relative flex h-28 text-8xl tracking-tight font-extrabold'>
+                <span className='text-xl xl:text-2xl font-semibold leading-none'>Hello! I am</span>
+                <div className='relative flex h-20 text-6xl xl:h-28 xl:text-8xl tracking-tight font-extrabold'>
                     {
                         gradients.map((gradient, index) => {
                             return <div key={'gardient-word-' + index}
@@ -25,7 +37,6 @@ export default function Home() {
                                     absolute 
                                     inset-0 
                                     flex 
-                                    text-8xl 
                                     tracking-tight 
                                     font-extrabold
                                     opacity-0
@@ -54,10 +65,10 @@ export default function Home() {
                         })
                     }
                 </div>
-                <p className='text-lg text-white/60 max-w-2xl'>
+                <p className='text-lg text-white/60 max-w-sm lg:max-w-md xl:max-w-2xl'>
                     Code, Design, Create: With a keen eye for design and a mastery of cutting-edge web and mobile technologies, I specialize in turning ideas into stunning, functional realities.
                 </p>
-                <div className='flex items-start w-full gap-5 mt-10'>
+                <div className='flex items-start max-md:justify-center w-full gap-5 mt-10'>
                     <Button label='Hire me' customClasses='!w-40 !mx-0' href='#contact' target='_self' />
                     <GradientButton
                         label='Download CV'
@@ -69,7 +80,7 @@ export default function Home() {
                     />
                 </div>
             </div>
-            <div className='flex flex-1 pl-20'>
+            <div className='flex flex-1 w-full ml-auto max-w-sm xl:max-w-md 3xl:max-w-lg max-md:mx-auto'>
                 <img className='w-full h-full object-contain' src="images/avatar.png" alt="avatar_image" />
             </div>
         </section>

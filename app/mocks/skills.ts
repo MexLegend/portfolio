@@ -61,8 +61,9 @@ export const skills: Skill[] = [
     },
     {
         label: "MongoDB",
-        experience: 5,
+        experience: 4,
         experienceTime: "Year",
+        showPlusLabel: true,
         icon: BiLogoMongodb
     },
     {

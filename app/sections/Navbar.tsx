@@ -2,28 +2,16 @@
 
 import { BsLinkedin, BsGithub } from 'react-icons/bs';
 import SocialMediaButton from '../components/SocialMediaButton';
-import { navLinks } from '../mocks/navlinks';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { useEffect } from 'react';
 import useActiveLinkStore from '../hooks/useActiveLink';
+import NavLinks from '../components/NavLinks';
+import NavMenu from '../components/NavMenu';
+import useToogleNavMenuStore from '../hooks/useToogleNavMenu';
 
 export default function Navbar() {
 
-    const params = useSearchParams();
-    const { activeLink, scrollOffset, setActiveLink } = useActiveLinkStore((state) => state);
-
-    useEffect(() => {
-        const navLink = navLinks.find(e => e.href === window.location.hash) || navLinks[0];
-        const navLinkElement = document.getElementById('link-' + navLink?.label.toLowerCase());
-
-        setActiveLink(
-            {
-                ...navLink,
-                width: `${navLinkElement?.offsetWidth || 59}px`,
-                translateX: `${navLinkElement?.offsetLeft || 0}px`,
-            });
-    }, [params]);
+    const { scrollOffset } = useActiveLinkStore((state) => state);
+    const { isOpen } = useToogleNavMenuStore((state) => state);
 
     return (
         <nav className={`
@@ -55,6 +43,7 @@ export default function Navbar() {
                 before:inset-0
                 before:-z-10
             `}
+            ${isOpen && '!bg-dark-blue'}
         `}>
             <Link
                 className="transition duration-200 active:scale-95 text-lg text-white font-bold hover:text-white"
@@ -62,59 +51,11 @@ export default function Navbar() {
             >
                 Portfolio
             </Link>
-            <ul className='flex gap-4 relative'>
-                {navLinks.map((link) => {
-                    return (
-                        <li key={link.label}>
-                            <Link
-                                className={`
-                                relative
-                                transition 
-                                duration-200 
-                                p-2
-                                active:scale-95 
-                                text-white/70 
-                                hover:text-white
-                                ${activeLink?.label === link.label && '!text-white'}
-                                `}
-                                href={link.href}
-                                id={'link-' + link.label.toLowerCase()}
-                                key={link.label}
-                                style={{
-                                    ['--startColor' as string]: link.gradient.startColor,
-                                    ['--endColor' as string]: link.gradient.endColor
-                                }}
-                            >
-                                {link.label}
-                            </Link>
-                        </li>
-
-                    )
-                })}
-                <div id='indicator' className={`
-                    absolute
-                    transition-all
-                    duration-700
-                    w-[var(--width)]
-                    h-[2px]
-                    left-0
-                    translate-x-[var(--translate-x)]
-                    -bottom-2
-                    rounded-t-md
-                    bg-gradient-to-r
-                    ${activeLink?.gradient.startColor}
-                    ${activeLink?.gradient.endColor}
-                `}
-                    style={{
-                        ['--translate-x' as string]: activeLink?.translateX,
-                        ['--width' as string]: activeLink?.width
-                    }}
-                >
-                </div>
-            </ul>
+            <NavLinks direction='Horizontal' hideOnMobile />
             <div className='flex gap-6 ml-auto'>
                 <SocialMediaButton icon={BsLinkedin} href='https://linkedin.com/in/armandolara97' />
                 <SocialMediaButton icon={BsGithub} href='https://github.com/MexLegend' />
+                <NavMenu />
             </div>
         </nav>
     )

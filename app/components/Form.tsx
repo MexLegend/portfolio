@@ -42,7 +42,7 @@ const Form = () => {
                 <div className='w-3 h-3 rounded-full bg-[#ffbd2e]'></div>
                 <div className='w-3 h-3 rounded-full bg-[#27c93f]'></div>
             </div>
-            <div className='flex flex-col w-full p-12 gap-6'>
+            <div className='flex flex-col w-full p-12 gap-6 max-sm:px-6'>
                 <FormInput
                     id='firstName'
                     key='firstName'

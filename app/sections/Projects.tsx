@@ -11,10 +11,11 @@ const Projects = () => {
                 className="
                     z-50
                     grid 
-                    gap-3 
-                    sm:grid-cols-1 
-                    md:grid-cols-3 
-                    lg:grid-cols-3 
+                    gap-8
+                    grid-cols-1 
+                    lg:grid-cols-2
+                    xl:grid-cols-3 
+                    3xl:grid-cols-4 
                     lg:gap-x-20 
                     justify-items-center 
                     pt-16
