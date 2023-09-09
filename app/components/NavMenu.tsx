@@ -3,12 +3,10 @@
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import NavLinks from "./NavLinks";
 import useToogleNavMenuStore from "../hooks/useToogleNavMenu";
-import useActiveLinkStore from "../hooks/useActiveLink";
 
 const NavMenu = () => {
 
     const { isOpen, setIsOpen } = useToogleNavMenuStore((state) => state);
-    const { scrollOffset } = useActiveLinkStore((state) => state);
 
     const toogleIsOpen = () => {
         setIsOpen(!isOpen);
@@ -31,7 +29,7 @@ const NavMenu = () => {
                 {isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
             </button>
             <div className={`
-                absolute 
+                fixed 
                 left-0
                 top-0
                 items-end 
@@ -39,12 +37,12 @@ const NavMenu = () => {
                 h-screen
                 w-screen
                 transition 
-                duration-500
+                duration-300
                 ease-in
                 -z-10
                 bg-dark-blue
                 ${isOpen ? 'max-md:translate-y-0' : '-translate-y-full'}
-            `} onClick={toogleIsOpen}>
+            `}>
                 <div className="flex items-center justify-center w-full py-24 h-full">
                     <NavLinks direction="Vertical" />
                 </div>

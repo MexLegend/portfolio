@@ -3,6 +3,7 @@ import { FC, useEffect } from 'react'
 import useActiveLinkStore from '../hooks/useActiveLink';
 import { navLinks } from '../mocks/navlinks';
 import Link from 'next/link';
+import useToogleNavMenuStore from '../hooks/useToogleNavMenu';
 
 type NavLinksDirection = "Vertical" | "Horizontal";
 
@@ -14,6 +15,7 @@ interface NavLinksProps {
 const NavLinks: FC<NavLinksProps> = ({ direction, hideOnMobile }) => {
 
     const params = useSearchParams();
+    const { isOpen, setIsOpen } = useToogleNavMenuStore((state) => state);
     const { activeLink, setActiveLink } = useActiveLinkStore((state) => state);
 
     useEffect(() => {
@@ -29,28 +31,50 @@ const NavLinks: FC<NavLinksProps> = ({ direction, hideOnMobile }) => {
     }, [params]);
 
     return (
-        <ul className={`flex gap-4 relative ${hideOnMobile && 'max-md:hidden'} ${direction === 'Vertical' && 'flex-col text-2xl gap-8'}`}>
-            {navLinks.map((link) => {
+        <ul className={`
+            flex 
+            gap-4 
+            relative 
+            ${hideOnMobile && 'max-md:hidden'} 
+            ${direction === 'Vertical' && 'flex-col w-full text-center text-2xl gap-8'}
+        `}>
+            {navLinks.map((link, index) => {
                 return (
-                    <li key={link.label}>
+                    <li key={link.label} className={`
+                        ${direction === 'Vertical' && 'transition-all translate-y-2/4 delay-[350ms] opacity-0 ease-out duration-500'}
+                        ${direction === 'Vertical' && isOpen && '!opacity-100 !translate-y-0 delay-[var(--delay)]'}
+                    `}
+                        style={{ ...(direction === 'Vertical' && isOpen && { transitionDelay: index === 0 ? '300ms' : `${300 + (150 * index)}ms` }) }}
+                    >
                         <Link
                             className={`
                                 relative
-                                transition 
+                                transition
                                 duration-200 
                                 p-2
                                 active:scale-95 
                                 text-white/70 
                                 hover:text-white
                                 ${activeLink?.label === link.label && '!text-white'}
+                                ${activeLink?.label === link.label && direction === 'Vertical' && `
+                                    after:w-full
+                                    after:h-1
+                                    after:absolute
+                                    after:left-0
+                                    after:-bottom-1
+                                    after:bg-gradient-to-r
+                                    after:from-[var(--startColor)]
+                                    after:to-[var(--endColor)]
+                                `}
                             `}
                             href={link.href}
                             id={'link-' + link.label.toLowerCase()}
                             key={link.label}
                             style={{
-                                ['--startColor' as string]: link.gradient.startColor,
-                                ['--endColor' as string]: link.gradient.endColor
+                                ['--startColor' as string]: link.gradient.startPureColor,
+                                ['--endColor' as string]: link.gradient.endPureColor
                             }}
+                            onClick={() => direction === 'Vertical' ? setIsOpen(!isOpen) : undefined}
                         >
                             {link.label}
                         </Link>
@@ -71,6 +95,7 @@ const NavLinks: FC<NavLinksProps> = ({ direction, hideOnMobile }) => {
                     bg-gradient-to-r
                     ${activeLink?.gradient.startColor}
                     ${activeLink?.gradient.endColor}
+                    ${direction === 'Vertical' && 'hidden'}
                 `}
                 style={{
                     ['--translate-x' as string]: activeLink?.translateX,

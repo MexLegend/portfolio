@@ -7,7 +7,13 @@ interface ToogleNavMenuStore {
 
 const useToogleNavMenuStore = create<ToogleNavMenuStore>((set) => ({
     isOpen: false,
-    setIsOpen: (isOpen) => set({ isOpen })
+    setIsOpen: (isOpen) => set((state) => {
+
+        if (isOpen) document.querySelector('body')!.style.overflow = 'hidden';
+        else document.querySelector('body')!.style.overflow = 'auto';
+
+        return { ...state, isOpen }
+    })
 }));
 
 export default useToogleNavMenuStore;

@@ -1,5 +1,4 @@
 import { NavLink } from "../types/navlink";
-import { Gradient } from '../types/gradient';
 import { gradients } from "./gradients";
 
 export const navLinks: NavLink[] = [
