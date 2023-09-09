@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <div className="flex flex-col flex-1 relative">
       <Navbar />
-      <div className="flex flex-1 flex-col w-4/5 mx-auto">
+      <div className="flex flex-1 flex-col w-4/5 max-md:w-11/12 mx-auto">
         <HomeSection />
         <Experience />
         <Projects />

@@ -24,6 +24,7 @@ export default function Navbar() {
             w-full
             items-center
             px-[10%]
+            max-md:px-[5%]
             bg-transparent
             border-b 
             border-b-transparent

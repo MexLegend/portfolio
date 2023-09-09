@@ -9,7 +9,7 @@ interface Props {
 
 const SectionDivider: FC<Partial<Gradient>> = ({ startViaColor, endViaColor }) => {
 
-    return <div className="absolute inset-0 m-auto -z-10 w-3/4 h-[.5px] left-0 -top-[.5px]">
+    return <div className="absolute inset-0 m-auto -z-10 w-3/4 max-sm:w-full h-[.5px] left-0 -top-[.5px]">
         <div
             className={`
             absolute 
@@ -47,7 +47,7 @@ const SectionHeader: FC<Props> = ({ label, gradient: { startColor, startViaColor
 
     return (
         <div className="relative w-full text-center">
-            <div className='bg-dark-blue px-9 py-5 w-min mx-auto'>
+            <div className='bg-dark-blue px-9 max-sm:px-5 py-5 w-min mx-auto'>
                 <span className={`
                     z-10
                     text-center 

@@ -5,7 +5,7 @@ import { projects } from '../mocks/projects';
 
 const Projects = () => {
     return (
-        <section id='projects' className='section py-20'>
+        <section id='projects' className='section pt-20'>
             <SectionHeader label='Projects' gradient={gradients[1]} />
             <div
                 className="
@@ -18,7 +18,9 @@ const Projects = () => {
                     3xl:grid-cols-4 
                     lg:gap-x-20 
                     justify-items-center 
-                    pt-16
+                    pt-16 
+                    pb-20 
+                    max-sm:pb-5
                 "
             >
                 {

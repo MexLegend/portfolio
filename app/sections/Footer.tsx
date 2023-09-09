@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const Footer = () => {
     return (
-        <div className='flex items-center w-full px-[10%] border-t h-16 border-t-light-blue justify-between'>
+        <div className='flex items-center w-full px-[10%] max-md:px-[5%] border-t h-16 border-t-light-blue justify-between'>
             <div className='flex gap-6'>
                 <SocialMediaButton icon={BsLinkedin} href='https://linkedin.com/in/armandolara97' />
                 <SocialMediaButton icon={BsGithub} href='https://github.com/MexLegend' />

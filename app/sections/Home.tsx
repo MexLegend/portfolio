@@ -22,14 +22,24 @@ export default function Home() {
                 h-screen 
                 min-h-[calc(100vh-64px)] 
                 w-full
-                max-md:flex-col-reverse
-                max-md:gap-12
-                max-md:justify-center
-                max-md:text-center
+                max-[1100px]:flex-col-reverse
+                max-[1100px]:gap-12
+                max-[1100px]:justify-center
+                max-[1100px]:text-center
             '>
-            <div className='flex flex-col gap-2 text-white'>
+            <div className='flex flex-col max-[1100px]:w-full max-[1100px]:items-center gap-2 text-white'>
                 <span className='text-xl xl:text-2xl font-semibold leading-none'>Hello! I am</span>
-                <div className='relative flex h-20 text-6xl xl:h-28 xl:text-8xl tracking-tight font-extrabold'>
+                <div className='
+                    relative 
+                    flex 
+                    text-6xl 
+                    xl:text-[5rem] 
+                    2xl:text-8xl 
+                    tracking-tight 
+                    font-extrabold 
+                    max-[1100px]:w-full
+                    '>
+                    <div className='invisible flex max-[480px]:flex-col'><span>Armando</span> <span>Lara</span></div>
                     {
                         gradients.map((gradient, index) => {
                             return <div key={'gardient-word-' + index}
@@ -39,6 +49,9 @@ export default function Home() {
                                     flex 
                                     tracking-tight 
                                     font-extrabold
+                                    max-[480px]:flex-col
+                                    max-[1100px]:items-center
+                                    max-[1100px]:justify-center
                                     opacity-0
                                     ${index === 1 && 'animate-delay-[6.66s]'}
                                     ${index === 2 && 'animate-delay-[13.33s]'}
@@ -65,10 +78,10 @@ export default function Home() {
                         })
                     }
                 </div>
-                <p className='text-lg text-white/60 max-w-sm lg:max-w-md xl:max-w-2xl'>
-                    Code, Design, Create: With a keen eye for design and a mastery of cutting-edge web and mobile technologies, I specialize in turning ideas into stunning, functional realities.
+                <p className='text-lg text-white/60 max-w-sm lg:max-w-md xl:max-w-xl mt-3'>
+                    Code, Design, Create: with a keen eye for design and a mastery of cutting-edge web and mobile technologies, I specialize in turning ideas into stunning, functional realities.
                 </p>
-                <div className='flex items-start max-md:justify-center w-full gap-5 mt-10'>
+                <div className='flex items-start max-[1100px]:justify-center w-full gap-5 mt-10'>
                     <Button label='Hire me' customClasses='!w-40 !mx-0' href='#contact' target='_self' />
                     <GradientButton
                         label='Download CV'
@@ -80,7 +93,7 @@ export default function Home() {
                     />
                 </div>
             </div>
-            <div className='flex flex-1 w-full ml-auto max-w-sm xl:max-w-md 3xl:max-w-lg max-md:mx-auto'>
+            <div className='flex flex-1 w-full ml-auto max-w-sm xl:max-w-md max-[1100px]:mx-auto max-[1100px]:mt-12'>
                 <img className='w-full h-full object-contain' src="images/avatar.png" alt="avatar_image" />
             </div>
         </section>
