@@ -86,6 +86,7 @@ const Form = () => {
                     outLined={false}
                     startColor='from-[#FF4D4D]'
                     endColor='to-[#F9CB28]'
+                    isLoading={isLoading}
                     click={handleSubmit(sendEmail)} />
             </div>
         </form>

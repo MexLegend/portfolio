@@ -2,6 +2,7 @@
 
 import { FC, HTMLAttributeAnchorTarget } from 'react'
 import { gradients } from '../mocks/gradients';
+import Loader from './Loader';
 
 interface Props {
     label: string;
@@ -12,15 +13,38 @@ interface Props {
     outLined: boolean;
     customClasses?: string;
     gradientCycle?: boolean;
+    loaderColor?: string;
     startColor?: string;
     endColor?: string;
+    isLoading?: boolean
 }
 
-const GradientButton: FC<Props> = ({ label, click, href, target, download, outLined, customClasses, gradientCycle, startColor, endColor }) => {
+const GradientButton: FC<Props> = ({
+    label,
+    click,
+    href,
+    target,
+    download,
+    outLined,
+    customClasses,
+    gradientCycle,
+    startColor,
+    endColor,
+    isLoading
+}) => {
 
     return (
         <a
-            className={`relative w-40 h-12 transition duration-200 active:scale-95 ${customClasses}`}
+            className={`
+                relative 
+                w-40 
+                h-12 
+                transition 
+                duration-200 
+                active:scale-95 
+                ${customClasses}
+                ${isLoading && 'pointer-events-none'}
+            `}
             onClick={click}
             href={href}
             target={target}
@@ -46,7 +70,8 @@ const GradientButton: FC<Props> = ({ label, click, href, target, download, outLi
                 text-white 
                 bg-transparent
             `}>
-                <span className='z-20 absolute inset-0 flex items-center justify-center'>{label}</span>
+                <span className={`z-20 absolute inset-0 flex items-center justify-center ${isLoading && 'hidden'}`}>{label}</span>
+                {isLoading && <Loader/>}
                 {
                     outLined && <div className={`
                         z-10

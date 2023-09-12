@@ -3,6 +3,7 @@
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import NavLinks from "./NavLinks";
 import useToogleNavMenuStore from "../hooks/useToogleNavMenu";
+import { useEffect } from "react";
 
 const NavMenu = () => {
 
@@ -11,6 +12,15 @@ const NavMenu = () => {
     const toogleIsOpen = () => {
         setIsOpen(!isOpen);
     }
+
+    const handleWindowResize = () => {
+        if (window.innerWidth > 768) setIsOpen(false);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowResize);
+        return () => window.removeEventListener("resize", handleWindowResize);
+    }, []);
 
     return (
         <>
@@ -41,7 +51,7 @@ const NavMenu = () => {
                 ease-in
                 -z-10
                 bg-dark-blue
-                ${isOpen ? 'max-md:translate-y-0' : '-translate-y-full'}
+                ${isOpen ? 'translate-y-0' : '-translate-y-full'}
             `}>
                 <div className="flex items-center justify-center w-full py-24 h-full">
                     <NavLinks direction="Vertical" />

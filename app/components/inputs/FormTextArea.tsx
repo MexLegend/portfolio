@@ -65,6 +65,7 @@ const FormTextarea: FC<Props> = ({ id, label, cols, rows, disabled, required, er
                 block 
                 pointer-events-none
                 peer-placeholder-shown:hidden 
+                peer-disabled:bg-[#2c2e47]
                 w-[calc(100%-20px)] 
                 bg-[#393c55] 
                 h-4 
