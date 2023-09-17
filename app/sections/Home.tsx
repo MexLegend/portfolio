@@ -87,7 +87,7 @@ export default function Home() {
                         label='Download CV'
                         outLined={true}
                         gradientCycle={true}
-                        href='cv/Armando_Lara_CV_V2.pdf'
+                        href='cv/Armando_Lara_CV.pdf'
                         target='_self'
                         download
                     />
