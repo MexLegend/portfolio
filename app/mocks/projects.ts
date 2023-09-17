@@ -1,6 +1,6 @@
 import { Project } from "../types/project";
 import { FaAngular, FaReact } from 'react-icons/fa';
-import { TbBrandNextjs } from 'react-icons/tb';
+import { TbBrandNextjs, TbBrandVite } from 'react-icons/tb';
 
 export const projects: Project[] = [
     {
@@ -50,5 +50,13 @@ export const projects: Project[] = [
         frameworkIcon: FaReact,
         codeLink: "https://github.com/MexLegend/gericht",
         demoLink: "https://gericht-landing.vercel.app"
+    },
+    {
+        name: "Hoobank",
+        thumbnail: "https://res.cloudinary.com/devmexsoft/image/upload/v1694909289/Projects%20Thumbnails/Hoobank_Thumbnail_lxpmtz.png",
+        description: "This project combines React's power and Vite's speed, ensuring lightning-fast performance and sleek design. The interface reflects he bank's modern approach to financial services.",
+        frameworkIcon: TbBrandVite,
+        codeLink: "https://github.com/MexLegend/hoobank",
+        demoLink: "https://hoobank-pay.vercel.app"
     }
 ];
