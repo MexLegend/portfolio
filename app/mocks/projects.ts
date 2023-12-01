@@ -17,7 +17,7 @@ export const projects: Project[] = [
         description: "Netflix clone build with the latest technologies including Next.js 13, Prisma, MongoDB, Cloudinary, Tailwind CSS, and Zustand. This project recreate the immersive Netflix experience.",
         frameworkIcon: TbBrandNextjs,
         codeLink: "https://github.com/MexLegend/netflix-clone",
-        demoLink: "https://video-viewer-4a0b0hjww-mexlegend.vercel.app"
+        demoLink: "https://video-viewer-teal.vercel.app"
     },
     {
         name: "Sociopedia",
